@@ -1,0 +1,21 @@
+﻿<Window x:Class="AviaSea.VIew.Menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AviaSea.VIew"
+        mc:Ignorable="d"
+        Title="Menu" Height="450" Width="800">
+    <Grid>
+        <Grid Background="Gray" HorizontalAlignment="Left" Width="187">
+            <Button x:Name="btMenuAvia" Content="Авиаперелеты" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="167" Height="42" Click="btMenuAvia_Click"/>
+            <Button x:Name="btMenuSettings" Content="Настройки" HorizontalAlignment="Left" Margin="10,325,0,0" VerticalAlignment="Top" Width="167" Height="42"/>
+            <Button x:Name="btExit" Content="Выход" HorizontalAlignment="Left" Margin="10,372,0,0" VerticalAlignment="Top" Width="167" Height="42"/>
+            <Button x:Name="btLikedAviaSea" Content="Избранное" HorizontalAlignment="Center" Margin="0,57,0,0" VerticalAlignment="Top" Width="167" Height="42" Click="btLikedAviaSea_Click"/>
+            <Button x:Name="btProfil" Content="Профиль" HorizontalAlignment="Center" Margin="0,278,0,0" VerticalAlignment="Top" Width="167" Height="42" Click="btProfil_Click"/>
+            <Button x:Name="btPosts" Content="Объявления" HorizontalAlignment="Center" Margin="0,104,0,0" VerticalAlignment="Top" Width="167" Height="42" Click="btPosts_Click"/>
+        </Grid>
+        <Frame x:Name="frContent" Margin="187,0,0,0" NavigationUIVisibility="Hidden"/>
+
+    </Grid>
+</Window>

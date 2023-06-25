@@ -1,0 +1,17 @@
+﻿<Window x:Class="AviaSea.VIew.Registration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AviaSea.VIew"
+        mc:Ignorable="d"
+        Title="Registration" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="tbName" HorizontalAlignment="Left" Height="52" Margin="279,27,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="180"/>
+        <TextBox x:Name="tbFamily" HorizontalAlignment="Left" Height="52" Margin="279,98,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="180"/>
+        <TextBox x:Name="tbLogin" HorizontalAlignment="Left" Height="52" Margin="279,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="180"/>
+        <TextBox x:Name="tbPassword" HorizontalAlignment="Left" Height="52" Margin="279,269,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="180"/>
+        <Button x:Name="btRegistration" Content="Регистрация" HorizontalAlignment="Left" Height="50" Margin="279,350,0,0" VerticalAlignment="Top" Width="180"/>
+
+    </Grid>
+</Window>
