@@ -17,14 +17,17 @@ namespace AviaSea.ViewModel
         {
             using(var context = new AviaSeaContext())
             {
-                var items = context.Posts;
+                var items = context.AllPosts;
                 foreach(var item in items)
                 {
                     Models.Posts posts = new Models.Posts()
                     {
                         PostId = item.IdPosts,
                         ImagePost = item.ImagePosts,
-                       //ImageUser = item.
+                       ImageUser = item.Img,
+                       FamilyUser = item.Family,
+                       NameUser = item.Name,
+                       
                         info = item.Info,
                         kolvo_see = (int)item.KolvoSee,
                     };

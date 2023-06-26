@@ -11,22 +11,36 @@
     <Page.DataContext>
         <vm:ViewModelAllPosts/>
     </Page.DataContext>
+
+
     <Grid Background="Gray">
-        <ListView Name="Thumbnails" ItemsSource="{Binding Posts}" Margin="10,10,10,10">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Image" Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Image Source="{Binding Path=bitmapImage}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=PostId}">id</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=kolvo_see}" Width="100">Просмотры</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=info}" Width="100">Информация</GridViewColumn>
-                </GridView>
-            </ListView.View>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ListView Grid.Row="1" Name="listViewPosts" ItemsSource="{Binding Posts}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="250">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0"/>
+                            <RowDefinition Height="200"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Image Width="150" Grid.Row="1" Stretch="UniformToFill" HorizontalAlignment="Center" Margin="0,5,0,0" Source="{Binding Path=bitmapImagePost}" />
+                        <TextBlock Grid.Row="2" Text="{Binding info}" VerticalAlignment="Center" TextAlignment="Center" Width="300" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="26"/>
+                        <TextBlock Grid.Row="3" Text="{Binding FamilyUser}" VerticalAlignment="Top" TextAlignment="Center" Width="55" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="10" Margin="32,60,0,0"/>
+                        <Image Width="27" Grid.Row="3" Stretch="UniformToFill" HorizontalAlignment="Left" Margin="0,48,0,0" Source="{Binding Path=bitmapImageUser}" />
+                        <TextBlock Grid.Row="3" Text="{Binding NameUser}" VerticalAlignment="Top" TextAlignment="Center" Width="60" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="27,49,0,0" FontSize="10"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </Page>

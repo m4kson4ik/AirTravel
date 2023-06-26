@@ -19,11 +19,19 @@
         <Label Content="Фамилия" HorizontalAlignment="Left" Margin="5,246,0,0" VerticalAlignment="Top"/>
         <Label Content="Статус:" HorizontalAlignment="Left" Margin="19,176,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Height="26" Margin="69,176,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbInformation" HorizontalAlignment="Left" Height="31" Margin="400,202,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="216"/>
-        <Label Content="Чем поделитесь?" HorizontalAlignment="Left" Margin="400,176,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btCreatePost" Content="Опубликовать" HorizontalAlignment="Left" Margin="616,202,0,0" VerticalAlignment="Top" Height="31" ButtonBase.Click="btCreatePost_Click"/>
-        <Button x:Name="addFotoanPost" Content="Прикрепить файл" HorizontalAlignment="Left" Margin="400,239,0,0" VerticalAlignment="Top" Click="addFotoanPost_Click"/>
-        <Image x:Name="imgPosts" HorizontalAlignment="Left" Height="89" Margin="508,243,0,0" VerticalAlignment="Top" Width="108"/>
+        <TextBox x:Name="tbInformation" HorizontalAlignment="Left" Height="31" Margin="311,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="216"/>
+        <Label Content="Чем поделитесь?" HorizontalAlignment="Left" Margin="311,15,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btCreatePost" Content="Опубликовать" HorizontalAlignment="Left" Margin="527,41,0,0" VerticalAlignment="Top" Height="31" ButtonBase.Click="btCreatePost_Click"/>
+        <Button x:Name="addFotoanPost" Content="Прикрепить файл" HorizontalAlignment="Left" Margin="311,78,0,0" VerticalAlignment="Top" Click="addFotoanPost_Click"/>
+        <Image x:Name="imgPosts" HorizontalAlignment="Left" Height="89" Margin="419,82,0,0" VerticalAlignment="Top" Width="108"/>
+        <Label Content="Все записи:" HorizontalAlignment="Left" Margin="311,136,0,0" VerticalAlignment="Top"/>
+        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="311,189,10,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Page>

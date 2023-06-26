@@ -15,6 +15,8 @@ public partial class AviaSeaContext : DbContext
     {
     }
 
+    public virtual DbSet<AllPost> AllPosts { get; set; }
+
     public virtual DbSet<LikedAviaSea> LikedAviaSeas { get; set; }
 
     public virtual DbSet<Post> Posts { get; set; }
@@ -29,6 +31,28 @@ public partial class AviaSeaContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<AllPost>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("AllPosts");
+
+            entity.Property(e => e.Family)
+                .HasMaxLength(50)
+                .HasColumnName("family");
+            entity.Property(e => e.IdPosts).HasColumnName("id_posts");
+            entity.Property(e => e.IdUser).HasColumnName("id_user");
+            entity.Property(e => e.ImagePosts).HasColumnName("image_posts");
+            entity.Property(e => e.Img).HasColumnName("img");
+            entity.Property(e => e.Info)
+                .HasMaxLength(150)
+                .HasColumnName("info");
+            entity.Property(e => e.KolvoSee).HasColumnName("kolvo_see");
+            entity.Property(e => e.Name)
+                .HasMaxLength(30)
+                .HasColumnName("name");
+        });
+
         modelBuilder.Entity<LikedAviaSea>(entity =>
         {
             entity.HasKey(e => e.IdLiked);

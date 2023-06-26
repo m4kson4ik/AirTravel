@@ -119,7 +119,7 @@ namespace AviaSea.VIew
             //byte[] image_bytes = File.ReadAllBytes(imgPosts.Source.ToString()); // получаем байты выбранного файла
             using(var context = new AviaSeaContext())
             {
-                var newitem = new Post()
+                var newitem = new DateBase.Post()
                 {
                     IdUser = ViewModelAutorization.id_user,
                     Info = tbInformation.Text,
