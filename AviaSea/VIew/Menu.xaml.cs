@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,9 +45,28 @@ namespace AviaSea.VIew
             frContent.Content = new Posts();
 
         }
-
-        private void btPosts_Click(object sender, object e)
+        private void btExitUser_Click(object sender, RoutedEventArgs e)
         {
+            var result = MessageBox.Show("Вы действительно хотите сменить аккаунт?", "Смена аккаунта", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                using (StreamWriter writer = new StreamWriter("C:\\Users\\Maksim Safonov\\source\\repos\\AviaSea\\AviaSea\\user.txt", false))
+                {
+                }
+                Autorization autorization = new Autorization();
+                autorization.Show();
+                this.Close();
+            }
+        }
+
+        private void btExit_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Вы дейстивтельно хотите выйти?", "Подтверждение", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                this.Close();
+            }
+                
         }
     }
 }

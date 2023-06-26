@@ -1,0 +1,32 @@
+﻿<Window x:Class="AviaSea.VIew.EditingUserProfil"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AviaSea.VIew"
+        xmlns:vm="clr-namespace:AviaSea.ViewModel"
+        mc:Ignorable="d"
+        Title="EditingUserProfil" Height="372" Width="442" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <vm:ViewModelEditingUserProfil/>
+    </Window.DataContext>
+    <Grid Margin="0,0,0,-16">
+        <Ellipse Grid.Row="0" Margin="10,0,332,255" Height="103" VerticalAlignment="Bottom">
+            <Ellipse.Fill>
+                <ImageBrush Stretch="UniformToFill"  ImageSource="{Binding Path=User.imageUser, UpdateSourceTrigger=PropertyChanged}"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Button Content="Выбрать" Command="{Binding CommandSelectedAvatar}" HorizontalAlignment="Left" Margin="122,50,0,0" VerticalAlignment="Top" Cursor="Hand" Width="99"/>
+        <Label Content="Имя:" HorizontalAlignment="Left" Margin="44,135,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="83,135,0,0" TextWrapping="Wrap" Text="{Binding User.Name}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Фамилия:" HorizontalAlignment="Left" Margin="18,169,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="83,169,0,0" TextWrapping="Wrap" Text="{Binding User.Family}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Пароль:" HorizontalAlignment="Left" Margin="29,204,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="83,204,0,0" TextWrapping="Wrap" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="133"/>
+        <Label Content="Новый пароль:" Visibility="{Binding IsValidPassword}" HorizontalAlignment="Left" Margin="0,240,0,0" VerticalAlignment="Top"/>
+        <Button Content="Изменить" Command="{Binding EditingPasswordAccept}" HorizontalAlignment="Left" Margin="237,240,0,0" VerticalAlignment="Top" Height="25" Cursor="Hand"/>
+        <TextBox HorizontalAlignment="Left" Visibility="{Binding IsValidPassword, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="96,240,0,0" TextWrapping="Wrap" Text="{Binding NewPassword}" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="83,286,0,0" Command="{Binding CommandSave}" VerticalAlignment="Top" Cursor="Hand"/>
+
+    </Grid>
+</Window>

@@ -11,29 +11,28 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace AviaSea.VIew
 {
     /// <summary>
-    /// Логика взаимодействия для Autorization.xaml
+    /// Логика взаимодействия для AllInfoPost.xaml
     /// </summary>
-    public partial class Autorization : Window
+    public partial class AllInfoPost : Page
     {
-        public Autorization()
+        public AllInfoPost()
         {
             InitializeComponent();
-            ((ViewModelAutorization)DataContext).ShowWindowAcceptLogin += MainWindow_ShowWindowAccept;
+            //((ViewModelAllPosts)DataContext).OpenWindow += OpenWindow;
         }
-        private void MainWindow_ShowWindowAccept()
+        private void OpenWindow()
         {
-            (new Menu()).Show();
-            this.Close();
+            
         }
-        private void lbRegistation_MouseUp(object sender, MouseButtonEventArgs e)
+        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            Registration registration = new Registration();
-            registration.ShowDialog();
+            
         }
     }
 }

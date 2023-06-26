@@ -14,10 +14,10 @@
     <Grid Background="Gray">
         <DataGrid ItemsSource="{Binding CollectionLikedAirTravel}" AutoGenerateColumns="False" SelectedItem="{Binding isCheckeds}" Margin="10,10,10,10">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Город Отправления" Binding="{Binding StartCity, Mode=OneWay}" Width="50"/>
+                <DataGridTextColumn Header="Город Отправления" Binding="{Binding StartCity, Mode=OneWay}" Width="100"/>
                 <DataGridTextColumn Header="Город Прибытия" Binding="{Binding EndCity, Mode=OneWay}" Width="150"/>
-                <DataGridTextColumn Header="Дата и время перелета туда" Binding="{Binding StartDate, Mode=OneWay}" Width="150"/>
-                <DataGridTextColumn Header="Дата и время перелета обратно" Binding="{Binding EndDate, Mode=OneWay}" Width="150"/>
+                <DataGridTextColumn Header="Дата и время перелета туда" Binding="{Binding StartDate, Mode=OneWay}" Width="210"/>
+                <DataGridTextColumn Header="Дата и время перелета обратно" Binding="{Binding EndDate, Mode=OneWay}" Width="210"/>
                 <DataGridTextColumn Header="Цена" Binding="{Binding Price, Mode=OneWay}" Width="150"/>
                 <DataGridCheckBoxColumn Header="Статус" Binding="{Binding isStatus, Mode=TwoWay}"/>
             </DataGrid.Columns>

@@ -1,5 +1,6 @@
 ﻿using AviaSea.Infostraction.Commands;
 using AviaSea.Models;
+using AviaSea.VIew;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -28,20 +29,21 @@ namespace AviaSea.ViewModel
         private bool OnCommandSelected(object obj) => true;
         private void CanCommandSelected(object obj)
         {
-
+            MessageBox.Show("ds");
         }
 
-        private bool selectedAir;
-        public bool SelectedAir
+        private static AirTravel selectedAir;
+        public static AirTravel SelectedAir
         {
             get { return selectedAir; }
             set
             {
                 selectedAir = value;
-                OnPropertyChange("SelectedAir");
-                MessageBox.Show(value.ToString());
+                DetailInfoInAvia viewModelDetailAllInfoPosts = new DetailInfoInAvia();
+                viewModelDetailAllInfoPosts.Show();
             }
         }
+
         public static int sat;
         public ObservableCollection<AirTravel> CollectionAirTravel { get;} = new ObservableCollection<AirTravel>();
         public ViewModelWindowOfTheListOfAvailableFlights()

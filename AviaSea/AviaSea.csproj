@@ -9,10 +9,19 @@
 
   <ItemGroup>
     <None Remove="avia.json" />
+    <None Remove="Resourse\close.png" />
+    <None Remove="user.txt" />
+    <None Remove="VIew\3dots.png" />
+    <None Remove="VIew\gPz0DD-mnutpU6ytN3_1xanM6HpQANhymhsRXa7tkSCLul3zaFEtAUvq1kuT6IND3v-PLIpuPLn8YWLpJWdj19U_.jpg" />
+    <None Remove="VIew\Group 2.png" />
+    <None Remove="VIew\png-clipart-eye-computer-icons-encapsulated-postscript-eyes-people-color.png" />
+    <None Remove="VIew\png-transparent-eye-icon-symbol-look-vision-see-pictogram-graphic-human-searching.png" />
+    <None Remove="VIew\pngegg.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.8">
@@ -23,11 +32,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resourse\" />
+    <Content Include="avia.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="avia.json" />
+    <Resource Include="Resourse\3dots.png" />
+    <Resource Include="Resourse\close.png" />
+    <Resource Include="user.txt" />
+    <Resource Include="VIew\gPz0DD-mnutpU6ytN3_1xanM6HpQANhymhsRXa7tkSCLul3zaFEtAUvq1kuT6IND3v-PLIpuPLn8YWLpJWdj19U_.jpg" />
+    <Resource Include="VIew\Group 2.png" />
+    <Resource Include="VIew\png-clipart-eye-computer-icons-encapsulated-postscript-eyes-people-color.png" />
+    <Resource Include="VIew\png-transparent-eye-icon-symbol-look-vision-see-pictogram-graphic-human-searching.png" />
+    <Resource Include="VIew\pngegg.png" />
   </ItemGroup>
 
 </Project>

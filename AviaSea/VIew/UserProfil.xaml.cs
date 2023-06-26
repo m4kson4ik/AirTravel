@@ -35,100 +35,26 @@ namespace AviaSea.VIew
         public UserProfil()
         {
             InitializeComponent();
-            UpdateImage();
         }
 
-        private void btSelected_Click(object sender, RoutedEventArgs e)
+        private void menu_Click(object sender, RoutedEventArgs e)
         {
-            try
+            var result = MessageBox.Show("Вы действительно хотите удалить запись?", "Удаление записи", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
             {
-                OpenFileDialog openFileDialog = new OpenFileDialog(); // создаем диалоговое окно
-                openFileDialog.ShowDialog(); // показываем
-                byte[] image_bytes = File.ReadAllBytes(openFileDialog.FileName); // получаем байты выбранного файла
                 using (var context = new AviaSeaContext())
                 {
-                    var item = context.Users.SingleOrDefault(s => s.IdUser == ViewModelAutorization.id_user);
-                    item.Img = image_bytes;
-                    context.Users.Update(item);
+                    var post = context.Posts.SingleOrDefault(s=> VIewModelUserProfil.SelectedPost.PostId == s.IdPosts);
+                    context.Posts.Remove(post);
                     context.SaveChanges();
-                    UpdateImage();
-                }
-            }
-            catch
-            {
-
-            }
-        }
-        private void UpdateImage()
-        {
-            using (var context = new AviaSeaContext())
-            {
-                var item = context.Users.SingleOrDefault(s => s.IdUser == ViewModelAutorization.id_user);
-                tbName.Text = item.Name;
-                tbFamily.Text = item.Family;
-                if (item.Img != null)
-                {
-                    MemoryStream memorystream = new MemoryStream();
-                    memorystream.Write(item.Img, 0, (int)item.Img.Length);
-                    memorystream.Seek(0, SeekOrigin.Begin);
-                    BitmapImage imgsource = new BitmapImage();
-                    imgsource.BeginInit();
-                    imgsource.StreamSource = memorystream;
-                    imgsource.EndInit();
-                    image.Source = imgsource; // реальный Image
                 }
             }
         }
-        private void btSelectыed_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                
-            }
-            catch
-            {
 
-            }
-        }
-
-        private void addFotoanPost_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog(); // создаем диалоговое окно
-                openFileDialog.ShowDialog(); // показываем
-                byte[] image_bytes = File.ReadAllBytes(openFileDialog.FileName); // получаем байты выбранного файла
-                imagePost = image_bytes;
-                MemoryStream memorystream = new MemoryStream();
-                memorystream.Write(image_bytes, 0, (int)image_bytes.Length);
-                memorystream.Seek(0, SeekOrigin.Begin);
-                BitmapImage imgsource = new BitmapImage();
-                imgsource.BeginInit();
-                imgsource.StreamSource = memorystream;
-                imgsource.EndInit();
-                imgPosts.Source = imgsource;
-            }
-            catch
-            {
-
-            }
-        }
-        public byte[] imagePost;
-        private void btCreatePost_Click(object sender, object e)
-        {
-            //byte[] image_bytes = File.ReadAllBytes(imgPosts.Source.ToString()); // получаем байты выбранного файла
-            using(var context = new AviaSeaContext())
-            {
-                var newitem = new Post()
-                {
-                    IdUser = ViewModelAutorization.id_user,
-                    Info = tbInformation.Text,
-                    ImagePosts = imagePost,
-                    KolvoSee = 0,
-                };
-                context.Posts.Add(newitem);
-                context.SaveChanges();
-            }
+            EditingUserProfil editingUserProfil = new EditingUserProfil();
+            editingUserProfil.ShowDialog();
         }
     }
 }

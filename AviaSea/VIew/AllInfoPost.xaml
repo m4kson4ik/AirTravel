@@ -1,4 +1,4 @@
-﻿<Page x:Class="AviaSea.VIew.Posts"
+﻿<Page x:Class="AviaSea.VIew.AllInfoPost"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,9 +7,9 @@
       xmlns:vm="clr-namespace:AviaSea.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Posts">
+      Title="AllInfoPost">
     <Page.DataContext>
-        <vm:ViewModelAllPosts/>
+        <vm:ViewModelDetailAllInfoPosts/>
     </Page.DataContext>
 
     <Grid Background="White">
@@ -17,7 +17,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ListView Grid.Row="1" Name="listViewPosts" BorderBrush="#FF1F244D"  VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling" VirtualizingPanel.IsContainerVirtualizable="True" SelectedItem="{Binding SelectedPosts}" ItemsSource="{Binding Posts}" Margin="2 3 -10 2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" Foreground="#FF1F244D">
+        <ListView Grid.Row="1" Name="listViewPosts" ItemsSource="{Binding Posts}" BorderBrush="#FF1F244D"  VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling" VirtualizingPanel.IsContainerVirtualizable="True" Margin="2 3 -10 2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" Foreground="#FF1F244D">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Vertical" HorizontalAlignment="Left"/>
@@ -28,6 +28,7 @@
 
                     <Border Background="#FFEEEEEE" BorderThickness="1,1,1,1" CornerRadius="8,8,8,8">
                         <Grid Width="Auto">
+
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto"/>
@@ -37,7 +38,7 @@
                             </Grid.RowDefinitions>
                             <Image Width="Auto" Height="Auto" Grid.Row="3" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,0,0" Source="{Binding Path=bitmapImagePost}"/>
                             <Image Grid.Row="4" Stretch="UniformToFill" Margin="0,5,21,0" Source="/VIew/pngegg.png" HorizontalAlignment="Right" Width="17" Height="17" />
-                            <TextBlock Grid.Row="1" Margin="5,0,73,0" Text="{Binding info}" Foreground="Black" TextAlignment="Left" Width="NaN" TextWrapping="WrapWithOverflow" HorizontalAlignment="Stretch" FontSize="15"/>
+                            <TextBlock Grid.Row="1" Margin="5,0,0,0" Text="{Binding info}" Foreground="Black" VerticalAlignment="Center" TextAlignment="Left" Width="695" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" FontSize="15"/>
                             <TextBlock Text="{Binding FamilyUser}" Foreground="Black" Margin="83,-15,0,0" VerticalAlignment="Center" TextAlignment="Center" Width="65" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="13" />
                             <Ellipse Grid.Row="0" Width="30" Height="30" HorizontalAlignment="Left" Margin="4 4">
                                 <Ellipse.Fill>
@@ -47,20 +48,12 @@
                             <TextBlock Text="{Binding NameUser}" Margin="19,4,0,0" Foreground="Black" VerticalAlignment="Top" TextAlignment="Right" Width="65" TextWrapping="Wrap" HorizontalAlignment="Left"  FontSize="13"/>
                             <TextBlock Grid.Row="4" Text="{Binding kolvo_see}" Foreground="Black" HorizontalAlignment="Right" Margin="2 3 10 1"/>
                             <TextBlock Grid.Row="0" Text="{Binding date, StringFormat=dd MMMM в HH:mm}" Foreground="Black" VerticalAlignment="Top" Margin="37 20 1 2" HorizontalAlignment="Left"/>
+                            <Button Content="Button" HorizontalAlignment="Left" Margin="-134,28,0,0" Grid.Row="3" VerticalAlignment="Top"/>
                         </Grid>
                     </Border>
                 </DataTemplate>
 
             </ListView.ItemTemplate>
         </ListView>
-        <Frame x:Name="frContent" Grid.Row="1" Margin="81,23,91,10" NavigationUIVisibility="Hidden"/>
-
-        <Button x:Name="btPost" Width="30" Click="btPost_Click" Background="Gray" Margin="709,23,61,0" Grid.RowSpan="2" Cursor="Hand" Height="32" VerticalAlignment="Top">
-            <Button.Template>
-                <ControlTemplate>
-                    <Image Source="/Resourse/close.png"/>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
     </Grid>
 </Page>

@@ -4,14 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AviaSea.VIew"
+        xmlns:vm="clr-namespace:AviaSea.ViewModel"
         mc:Ignorable="d"
         Title="Registration" Height="450" Width="800">
-    <Grid>
-        <TextBox x:Name="tbName" HorizontalAlignment="Left" Height="52" Margin="279,27,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="180"/>
-        <TextBox x:Name="tbFamily" HorizontalAlignment="Left" Height="52" Margin="279,98,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="180"/>
-        <TextBox x:Name="tbLogin" HorizontalAlignment="Left" Height="52" Margin="279,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="180"/>
-        <TextBox x:Name="tbPassword" HorizontalAlignment="Left" Height="52" Margin="279,269,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="180"/>
-        <Button x:Name="btRegistration" Content="Регистрация" HorizontalAlignment="Left" Height="50" Margin="279,350,0,0" VerticalAlignment="Top" Width="180"/>
-
+    <Window.DataContext>
+        <vm:ViewModelRegistration/>
+    </Window.DataContext>
+        <Grid>
+        <TextBox x:Name="tbName" HorizontalAlignment="Left" Height="26" Margin="279,53,0,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" Width="180"/>
+        <TextBox x:Name="tbFamily" HorizontalAlignment="Left" Height="26" Margin="279,111,0,0" TextWrapping="Wrap" Text="{Binding Family}" VerticalAlignment="Top" Width="180"/>
+        <TextBox x:Name="tbLogin" HorizontalAlignment="Left" Height="26" Margin="279,0,0,0" TextWrapping="Wrap" Text="{Binding Login}" VerticalAlignment="Center" Width="180"/>
+        <TextBox x:Name="tbPassword" HorizontalAlignment="Left" Height="26" Margin="279,295,0,0" TextWrapping="Wrap" Text="{Binding Password}" VerticalAlignment="Top" Width="180"/>
+        <Button x:Name="btRegistration" Content="Регистрация" HorizontalAlignment="Left" Height="50" Margin="279,350,0,0" VerticalAlignment="Top" Width="180" Command="{Binding Registration}"/>
+        <Label Content="Имя:" HorizontalAlignment="Left" Height="26" Margin="182,53,0,0" VerticalAlignment="Top" Width="60"/>
+        <Label Content="Фамилия:" HorizontalAlignment="Left" Height="26" Margin="182,111,0,0" VerticalAlignment="Top" Width="60"/>
+        <Label Content="Логин:" HorizontalAlignment="Left" Height="26" Margin="182,217,0,0" VerticalAlignment="Top" Width="60"/>
+        <Label Content="Пароль:" HorizontalAlignment="Left" Height="26" Margin="182,295,0,0" VerticalAlignment="Top" Width="60"/>
     </Grid>
 </Window>

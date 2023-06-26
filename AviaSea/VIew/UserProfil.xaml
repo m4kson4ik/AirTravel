@@ -4,26 +4,74 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AviaSea.VIew"
+      xmlns:vm="clr-namespace:AviaSea.ViewModel"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="650" d:DesignWidth="800"
       Title="UserProfil">
+    <Page.DataContext>
+        <vm:VIewModelUserProfil/>
+    </Page.DataContext>
+    <Grid Background="White" Margin="2,-5,-2,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-    <Grid Background="Gray" Margin="2,-5,-2,5">
-        <Image x:Name="image" HorizontalAlignment="Left" Height="108" Margin="10,43,0,0" VerticalAlignment="Top" Width="129"/>
-        <Button x:Name="btSelected" Content="Выбрать" HorizontalAlignment="Left" Height="39" Margin="155,43,0,0" VerticalAlignment="Top" Width="101" Click="btSelected_Click"/>
-        <TextBox x:Name="tbName" HorizontalAlignment="Left" Margin="69,207,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="31"/>
-        <Label x:Name="lbEditName" Content="Изменить" HorizontalAlignment="Left" Margin="189,210,0,0" VerticalAlignment="Top"/>
-        <Label Content="Имя" HorizontalAlignment="Left" Margin="31,207,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbFamily" HorizontalAlignment="Left" Margin="69,243,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="31"/>
-        <Label x:Name="lbFamily" Content="Изменить" HorizontalAlignment="Left" Margin="189,246,0,0" VerticalAlignment="Top"/>
-        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="5,246,0,0" VerticalAlignment="Top"/>
-        <Label Content="Статус:" HorizontalAlignment="Left" Margin="19,176,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="26" Margin="69,176,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbInformation" HorizontalAlignment="Left" Height="31" Margin="400,202,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="216"/>
-        <Label Content="Чем поделитесь?" HorizontalAlignment="Left" Margin="400,176,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btCreatePost" Content="Опубликовать" HorizontalAlignment="Left" Margin="616,202,0,0" VerticalAlignment="Top" Height="31" ButtonBase.Click="btCreatePost_Click"/>
-        <Button x:Name="addFotoanPost" Content="Прикрепить файл" HorizontalAlignment="Left" Margin="400,239,0,0" VerticalAlignment="Top" Click="addFotoanPost_Click"/>
-        <Image x:Name="imgPosts" HorizontalAlignment="Left" Height="89" Margin="508,243,0,0" VerticalAlignment="Top" Width="108"/>
-
+        <ListView Name="listViewPosts" BorderBrush="#FF1F244D" ItemsSource="{Binding UserPosts}" SelectedItem="{Binding SelectedPost}" VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling" VirtualizingPanel.IsContainerVirtualizable="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" Foreground="#FF1F244D" Margin="294,32,0,10" Grid.RowSpan="2" Width="Auto" Height="Auto">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="#FFEEEEEE" BorderThickness="1,1,1,1" CornerRadius="8,8,8,8">
+                        <Grid Width="Auto" Background="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Image Width="Auto" Grid.Row="3" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0" Source="{Binding Path=bitmapImagePost}" />
+                            <TextBlock Grid.Row="1" Text="{Binding info}" VerticalAlignment="Center" TextAlignment="Left" Width="434" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="15"/>
+                            <TextBlock Grid.Row="0" Text="{Binding FamilyUser}" Margin="64 3 20 0" VerticalAlignment="Top" TextAlignment="Center" Width="65" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="10" />
+                            <Ellipse Width="35" Height="35" HorizontalAlignment="Left">
+                                <Ellipse.Fill>
+                                    <ImageBrush Stretch="UniformToFill"  ImageSource="{Binding Path=bitmapImageUser}" />
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBlock Grid.Row="0" Text="{Binding NameUser}" Margin="23 3 20 0" VerticalAlignment="Top" TextAlignment="Center" Width="65" TextWrapping="Wrap" HorizontalAlignment="Left"  FontSize="10"/>
+                            <TextBlock Grid.Row="4" Text="{Binding kolvo_see}" HorizontalAlignment="Right" Margin="2 3 10 1"/>
+                            <Image Grid.Row="0" Stretch="UniformToFill" Source="\Resourse\3dots.png" Height="20" Margin="0,4,2,11" HorizontalAlignment="Right" Width="20" >
+                                <Image.ContextMenu>
+                                    <ContextMenu >
+                                        <MenuItem x:Name="menu" Header="Удалить запись" HorizontalAlignment="Left" Width="200" Click="menu_Click" />
+                                    </ContextMenu>
+                                </Image.ContextMenu>
+                            </Image>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Ellipse Width="150" Height="150" HorizontalAlignment="Left" Margin="32,10,0,33">
+            <Ellipse.Fill>
+                <ImageBrush Stretch="UniformToFill"  ImageSource="{Binding Path=UpdateImage}" />
+            </Ellipse.Fill>
+        </Ellipse>
+        <TextBox x:Name="tbInformation" HorizontalAlignment="Left" Height="32" Margin="8,154,0,0" TextWrapping="Wrap" Text="{Binding ContentInPost, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="216" Grid.Row="1"/>
+        <Label Content="Чем поделитесь?" HorizontalAlignment="Left" Margin="13,141,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <Button x:Name="btCreatePost" Content="Опубликовать" HorizontalAlignment="Left" Margin="8,200,0,0" VerticalAlignment="Top" Height="32" Command="{Binding PublishPost}" Background="#FF1F244D" Grid.Row="1" Cursor="Hand"/>
+        <Button x:Name="addFotoanPost" Content="Прикрепить файл" HorizontalAlignment="Left" Margin="139,200,0,0" VerticalAlignment="Top" Command="{Binding AttachFile, Mode=TwoWay}" Background="#FF1F244D" Grid.Row="1"/>
+        <Image x:Name="imgPosts" Source="{Binding ImageInPost, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="Auto" Margin="13,240,0,0" VerticalAlignment="Top" Width="276" Grid.Row="1"/>
+        <Label Content="Все записи:" Margin="330,8,400,161"/>
+        <Button Content="Редактировать профиль" HorizontalAlignment="Left" Margin="8,39,0,0" VerticalAlignment="Top" Background="#FF1F244D" Width="193" Click="Button_Click" Grid.Row="1"/>
+        <Label Content="Статус:" HorizontalAlignment="Left" Margin="17,76,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="17,100,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="162"/>
+        <Label Content="изменить" HorizontalAlignment="Left" Margin="184,101,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="{Binding NameUser}" HorizontalAlignment="Left" Margin="38,165,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding FamilyUser}" HorizontalAlignment="Left" Margin="36,0,0,0" VerticalAlignment="Top" Grid.Row="1"/>
     </Grid>
 </Page>

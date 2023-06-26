@@ -1,10 +1,9 @@
-﻿using Microsoft.VisualBasic;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace AviaSea.DateBase;
+namespace AviaSea;
 
-public partial class Post
+public partial class AllPost
 {
     public int? IdUser { get; set; }
 
@@ -15,6 +14,12 @@ public partial class Post
     public int? KolvoSee { get; set; }
 
     public int IdPosts { get; set; }
+
+    public string? Name { get; set; }
+
+    public string? Family { get; set; }
+
+    public byte[]? Img { get; set; }
 
     public DateTime? Date { get; set; }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AviaSea.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,20 @@ namespace AviaSea.VIew
         public Posts()
         {
             InitializeComponent();
+            ((ViewModelAllPosts)DataContext).OpenWindow += HiddenAllInfo;
+            btPost.Visibility = Visibility.Hidden;
+        }
+
+        private void HiddenAllInfo()
+        {
+            frContent.Content = new AllInfoPost();
+            btPost.Visibility = Visibility.Visible;
+        }
+
+        private void btPost_Click(object sender, RoutedEventArgs e)
+        {
+            frContent.Content = null;
+            btPost.Visibility = Visibility.Hidden;
         }
     }
 }

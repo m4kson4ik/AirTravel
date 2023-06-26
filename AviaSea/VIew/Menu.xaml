@@ -7,13 +7,21 @@
         mc:Ignorable="d"
         Title="Menu" Height="450" Width="800">
     <Grid>
-        <Grid Background="Gray" HorizontalAlignment="Left" Width="187">
-            <Button x:Name="btMenuAvia" Content="Авиаперелеты" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="167" Height="42" Click="btMenuAvia_Click"/>
-            <Button x:Name="btMenuSettings" Content="Настройки" HorizontalAlignment="Left" Margin="10,325,0,0" VerticalAlignment="Top" Width="167" Height="42"/>
-            <Button x:Name="btExit" Content="Выход" HorizontalAlignment="Left" Margin="10,372,0,0" VerticalAlignment="Top" Width="167" Height="42"/>
+        <Grid Background="#FF1F244D" HorizontalAlignment="Left" Width="187">
+            <Button x:Name="btMenuAvia" Content="Авиаперелеты" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="167" Height="42" Click="btMenuAvia_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF78FFEC" Offset="1"/>
+                        <GradientStop Color="#FF8478FF" Offset="0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btMenuSettings" Content="Настройки" HorizontalAlignment="Center" Margin="0,205,0,0" VerticalAlignment="Top" Width="167" Height="42"/>
+            <Button x:Name="btExit" Content="Выход" HorizontalAlignment="Left" Margin="10,372,0,0" VerticalAlignment="Top" Width="167" Height="42" Click="btExit_Click"/>
             <Button x:Name="btLikedAviaSea" Content="Избранное" HorizontalAlignment="Center" Margin="0,57,0,0" VerticalAlignment="Top" Width="167" Height="42" Click="btLikedAviaSea_Click"/>
-            <Button x:Name="btProfil" Content="Профиль" HorizontalAlignment="Center" Margin="0,278,0,0" VerticalAlignment="Top" Width="167" Height="42" Click="btProfil_Click"/>
+            <Button x:Name="btProfil" Content="Профиль" HorizontalAlignment="Center" Margin="0,158,0,0" VerticalAlignment="Top" Width="167" Height="42" Click="btProfil_Click"/>
             <Button x:Name="btPosts" Content="Объявления" HorizontalAlignment="Center" Margin="0,104,0,0" VerticalAlignment="Top" Width="167" Height="42" Click="btPosts_Click"/>
+            <Button x:Name="btExitUser" Content="Сменить пользователя" HorizontalAlignment="Center" Margin="0,319,0,0" VerticalAlignment="Top" Width="167" Height="48" Cursor="Hand" Click="btExitUser_Click"/>
         </Grid>
         <Frame x:Name="frContent" Margin="187,0,0,0" NavigationUIVisibility="Hidden"/>
 
