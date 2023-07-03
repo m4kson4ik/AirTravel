@@ -29,10 +29,7 @@ namespace AviaSea.ViewModel
                     {
                         PostId = item.IdPosts,
                         ImagePost = item.ImagePosts,
-                        ImageUser = item.Img,
-                        FamilyUser = item.Family,
-                        NameUser = item.Name,
-                        date = Convert.ToDateTime(item.Date),
+                       //ImageUser = item.
                         info = item.Info,
                         kolvo_see = (int)item.KolvoSee,
                     };
